@@ -275,7 +275,13 @@ namespace Log4Debug
 
             while (logAnalyser.GoonAnalysing())
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(300);
+
+                logAnalyser.AddLog("[Debug]___eaaaaaaaaaaafda\n", LogLevel.Debug);
+                logAnalyser.AddLog("[ Info]___ebbbbbbbbbbbbbeaa\n", LogLevel.Info);
+                logAnalyser.AddLog("[ Warn]___eaccccccccccca\n", LogLevel.Warn);
+                logAnalyser.AddLog("[Error]hggggggggggggggg\n", LogLevel.Error);
+                logAnalyser.AddLog("[Undef]ffffffffffffffffffffffff\n", LogLevel.Undefine);
             }
         }
 

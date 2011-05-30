@@ -42,12 +42,13 @@
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.剪切ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -85,19 +86,20 @@
             // 
             this.connectToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.connectToolStripMenuItem.Text = "连接";
+            this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "退出";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -119,7 +121,7 @@
             this.errorToolStripMenuItem.CheckOnClick = true;
             this.errorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.errorToolStripMenuItem.Name = "errorToolStripMenuItem";
-            this.errorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.errorToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.errorToolStripMenuItem.Text = "Error";
             this.errorToolStripMenuItem.Click += new System.EventHandler(this.errorToolStripMenuItem_Click);
             // 
@@ -130,7 +132,7 @@
             this.warnToolStripMenuItem.CheckOnClick = true;
             this.warnToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.warnToolStripMenuItem.Name = "warnToolStripMenuItem";
-            this.warnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.warnToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.warnToolStripMenuItem.Text = "Warn";
             // 
             // infoToolStripMenuItem
@@ -140,7 +142,7 @@
             this.infoToolStripMenuItem.CheckOnClick = true;
             this.infoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.infoToolStripMenuItem.Text = "Info";
             // 
             // debugToolStripMenuItem
@@ -150,7 +152,7 @@
             this.debugToolStripMenuItem.CheckOnClick = true;
             this.debugToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.debugToolStripMenuItem.Text = "Debug";
             // 
             // helpToolStripMenuItem
@@ -168,21 +170,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.aboutToolStripMenuItem.Text = "关于";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // textBox
-            // 
-            this.textBox.BackColor = System.Drawing.SystemColors.Desktop;
-            this.textBox.ContextMenuStrip = this.contextMenuStrip;
-            this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox.ForeColor = System.Drawing.SystemColors.Info;
-            this.textBox.Location = new System.Drawing.Point(0, 25);
-            this.textBox.MaxLength = 100000000;
-            this.textBox.Multiline = true;
-            this.textBox.Name = "textBox";
-            this.textBox.ReadOnly = true;
-            this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox.Size = new System.Drawing.Size(784, 665);
-            this.textBox.TabIndex = 2;
             // 
             // contextMenuStrip
             // 
@@ -217,17 +204,38 @@
             this.清空ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.清空ToolStripMenuItem.Text = "清空";
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // richTextBox
+            // 
+            this.richTextBox.BackColor = System.Drawing.Color.Black;
+            this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox.ForeColor = System.Drawing.Color.White;
+            this.richTextBox.Location = new System.Drawing.Point(0, 25);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.ReadOnly = true;
+            this.richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.richTextBox.ShortcutsEnabled = false;
+            this.richTextBox.Size = new System.Drawing.Size(784, 665);
+            this.richTextBox.TabIndex = 2;
+            this.richTextBox.TabStop = false;
+            this.richTextBox.Text = "";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 712);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Main";
             this.Text = "Log4Debug";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
@@ -251,12 +259,13 @@
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem 剪切ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.RichTextBox richTextBox;
     }
 }
 
