@@ -26,5 +26,10 @@ namespace Log4Debug
             about.ShowDialog();
             
         }
+
+        private void errorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

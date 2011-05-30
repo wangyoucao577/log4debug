@@ -36,12 +36,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.levelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.errorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.warnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.剪切ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,19 +85,19 @@
             // 
             this.connectToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.connectToolStripMenuItem.Text = "连接";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "退出";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -112,6 +112,47 @@
             this.levelToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.levelToolStripMenuItem.Text = "等级";
             // 
+            // errorToolStripMenuItem
+            // 
+            this.errorToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.errorToolStripMenuItem.Checked = true;
+            this.errorToolStripMenuItem.CheckOnClick = true;
+            this.errorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.errorToolStripMenuItem.Name = "errorToolStripMenuItem";
+            this.errorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.errorToolStripMenuItem.Text = "Error";
+            this.errorToolStripMenuItem.Click += new System.EventHandler(this.errorToolStripMenuItem_Click);
+            // 
+            // warnToolStripMenuItem
+            // 
+            this.warnToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.warnToolStripMenuItem.Checked = true;
+            this.warnToolStripMenuItem.CheckOnClick = true;
+            this.warnToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.warnToolStripMenuItem.Name = "warnToolStripMenuItem";
+            this.warnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.warnToolStripMenuItem.Text = "Warn";
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.infoToolStripMenuItem.Checked = true;
+            this.infoToolStripMenuItem.CheckOnClick = true;
+            this.infoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
+            this.debugToolStripMenuItem.Checked = true;
+            this.debugToolStripMenuItem.CheckOnClick = true;
+            this.debugToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.debugToolStripMenuItem.Text = "Debug";
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -124,45 +165,9 @@
             // 
             this.aboutToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.aboutToolStripMenuItem.Text = "关于";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
-            // 
-            // errorToolStripMenuItem
-            // 
-            this.errorToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.errorToolStripMenuItem.Checked = true;
-            this.errorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.errorToolStripMenuItem.Name = "errorToolStripMenuItem";
-            this.errorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.errorToolStripMenuItem.Text = "Error";
-            // 
-            // warnToolStripMenuItem
-            // 
-            this.warnToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.warnToolStripMenuItem.Checked = true;
-            this.warnToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.warnToolStripMenuItem.Name = "warnToolStripMenuItem";
-            this.warnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.warnToolStripMenuItem.Text = "Warn";
-            // 
-            // infoToolStripMenuItem
-            // 
-            this.infoToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.infoToolStripMenuItem.Checked = true;
-            this.infoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.infoToolStripMenuItem.Text = "Info";
-            // 
-            // debugToolStripMenuItem
-            // 
-            this.debugToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
-            this.debugToolStripMenuItem.Checked = true;
-            this.debugToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.debugToolStripMenuItem.Text = "Debug";
             // 
             // textBox
             // 
