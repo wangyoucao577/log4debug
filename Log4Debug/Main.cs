@@ -15,6 +15,9 @@ namespace Log4Debug
     {
         private LogAnalyser m_logAnalyser = null;
 
+        private bool m_textBoxCanScroll = true;
+        private object m_scrollMutex = new object();
+
         public Main()
         {
             InitializeComponent();
@@ -57,12 +60,29 @@ namespace Log4Debug
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            bool canScroll = true;
+            lock (m_scrollMutex)
+            {
+                canScroll = m_textBoxCanScroll;
+            }
+            //if (canScroll)
+            //{
+            //    richTextBox.BeginAllowScroll();
+            //}
+            //else 
+            //{
+            //    richTextBox.EndAllowScroll();
+            //}
+
             List<string> logList = null;
             List<LogLevel> logLevelList = null;
+
 
             m_logAnalyser.GetLogs(out logList, out logLevelList);
             if (null != logList)
             {
+
+                richTextBox.BeginUpdate();
                 for (int i = 0; i < logList.Count; ++i)
                 {
                     switch(logLevelList[i])
@@ -88,7 +108,21 @@ namespace Log4Debug
                     }
 
                     richTextBox.AppendText(logList[i]);
+                    
                 }
+
+                
+                //richTextBox.Focus();
+                richTextBox.EndUpdate();
+                richTextBox.ScrollToCaret();
+
+                if (canScroll)
+                {
+                    
+                }
+                
+            
+                
 
                 logLevelList = null;
                 logList = null;
@@ -124,6 +158,62 @@ namespace Log4Debug
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseWorkers();
+        }
+
+        private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox.SelectAll();
+            richTextBox.Copy();
+            richTextBox.Clear();
+        }
+
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox.SelectAll();
+            richTextBox.Copy();
+        }
+
+        private void 清空ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox.Clear();
+        }
+
+        private void richTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void richTextBox_VScroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void scrollStartPauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (scrollStartPauseToolStripMenuItem.Text.Equals(Resources.StartScroll))
+            {
+                lock (m_scrollMutex)
+                {
+                    m_textBoxCanScroll = true;
+                }
+                scrollStartPauseToolStripMenuItem.Text = Resources.StopScroll;
+
+                richTextBox.BeginAllowScroll();
+            }
+            else if (scrollStartPauseToolStripMenuItem.Text.Equals(Resources.StopScroll))
+            {
+                lock (m_scrollMutex)
+                {
+                    m_textBoxCanScroll = false;
+                }
+                scrollStartPauseToolStripMenuItem.Text = Resources.StartScroll;
+
+                richTextBox.EndAllowScroll();
+            }
+            else
+            {
+                Debug.Assert(false);
+            }
         }
     }
 }

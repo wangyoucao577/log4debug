@@ -48,7 +48,9 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.scrollStartPauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.richTextBox = new Log4Debug.SuperRichTextBox();
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -86,20 +88,20 @@
             // 
             this.connectToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.connectToolStripMenuItem.Text = "连接";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(97, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "退出";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -177,21 +179,25 @@
             this.剪切ToolStripMenuItem,
             this.复制ToolStripMenuItem,
             this.toolStripSeparator2,
-            this.清空ToolStripMenuItem});
+            this.清空ToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.scrollStartPauseToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(134, 76);
+            this.contextMenuStrip.Size = new System.Drawing.Size(134, 104);
             // 
             // 剪切ToolStripMenuItem
             // 
             this.剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem";
             this.剪切ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.剪切ToolStripMenuItem.Text = "全选+剪切";
+            this.剪切ToolStripMenuItem.Click += new System.EventHandler(this.剪切ToolStripMenuItem_Click);
             // 
             // 复制ToolStripMenuItem
             // 
             this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
             this.复制ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.复制ToolStripMenuItem.Text = "全选+复制";
+            this.复制ToolStripMenuItem.Click += new System.EventHandler(this.复制ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -203,18 +209,33 @@
             this.清空ToolStripMenuItem.Name = "清空ToolStripMenuItem";
             this.清空ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.清空ToolStripMenuItem.Text = "清空";
+            this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(130, 6);
+            // 
+            // scrollStartPauseToolStripMenuItem
+            // 
+            this.scrollStartPauseToolStripMenuItem.Name = "scrollStartPauseToolStripMenuItem";
+            this.scrollStartPauseToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.scrollStartPauseToolStripMenuItem.Text = "暂停滚动";
+            this.scrollStartPauseToolStripMenuItem.Click += new System.EventHandler(this.scrollStartPauseToolStripMenuItem_Click);
+            // 
             // richTextBox
             // 
             this.richTextBox.BackColor = System.Drawing.Color.Black;
+            this.richTextBox.ContextMenuStrip = this.contextMenuStrip;
             this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox.Font = new System.Drawing.Font("Consolas", 12F);
             this.richTextBox.ForeColor = System.Drawing.Color.White;
             this.richTextBox.Location = new System.Drawing.Point(0, 25);
+            this.richTextBox.MaxLength = 1;
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
             this.richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
@@ -223,6 +244,8 @@
             this.richTextBox.TabIndex = 2;
             this.richTextBox.TabStop = false;
             this.richTextBox.Text = "";
+            this.richTextBox.VScroll += new System.EventHandler(this.richTextBox_VScroll);
+            this.richTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox_MouseDown);
             // 
             // Main
             // 
@@ -265,7 +288,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem 清空ToolStripMenuItem;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.RichTextBox richTextBox;
+        //private System.Windows.Forms.RichTextBox richTextBox;
+        SuperRichTextBox richTextBox;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem scrollStartPauseToolStripMenuItem;
     }
 }
 

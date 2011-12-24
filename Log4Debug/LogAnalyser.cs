@@ -272,17 +272,22 @@ namespace Log4Debug
 
             Byte[] logData = new Byte[MaxToBeContinuedLogBytes];
             int unAnalysedBytes = 0;
+            int testCount = 0;
 
             while (logAnalyser.GoonAnalysing())
             {
-                Thread.Sleep(300);
+                Thread.Sleep(50);
 
-                logAnalyser.AddLog("[Debug]___eaaaaaaaaaaafda\n", LogLevel.Debug);
-                logAnalyser.AddLog("[ Info]___ebbbbbbbbbbbbbeaa\n", LogLevel.Info);
-                logAnalyser.AddLog("[ Warn]___eaccccccccccca\n", LogLevel.Warn);
-                logAnalyser.AddLog("[Error]hggggggggggggggg\n", LogLevel.Error);
-                logAnalyser.AddLog("[Undef]ffffffffffffffffffffffff\n", LogLevel.Undefine);
-            }
+                string testStr = "[Debug]_" + testCount.ToString() + "\n";
+                ++testCount;
+                logAnalyser.AddLog(testStr, LogLevel.Debug);
+
+                logAnalyser.AddLog("[Debug]_eaaaaaaaaaaafda\n", LogLevel.Debug);
+                logAnalyser.AddLog("[ Info]_ebbbbbbbbbbbbbeaa\n", LogLevel.Info);
+                logAnalyser.AddLog("[ Warn]_eaccccccccccca\n", LogLevel.Warn);
+                logAnalyser.AddLog("[Error]_hggggggggggggggg\n", LogLevel.Error);
+                logAnalyser.AddLog("[Undef]_ffffffffffffffffffffffff\n", LogLevel.Undefine);
+             }
         }
 
         public bool Start()

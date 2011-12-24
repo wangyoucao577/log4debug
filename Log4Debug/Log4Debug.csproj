@@ -79,6 +79,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SuperRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TcpClientBasedLogGet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
