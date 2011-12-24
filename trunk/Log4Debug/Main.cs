@@ -18,6 +18,12 @@ namespace Log4Debug
         private bool m_textBoxCanScroll = true;
         private object m_scrollMutex = new object();
 
+        private bool m_printErr = true;
+        private bool m_printWarn = true;
+        private bool m_printInfo = true;
+        private bool m_printDebug = true;
+        private object m_printLevelMutex = new object();
+
         public Main()
         {
             InitializeComponent();
@@ -55,6 +61,21 @@ namespace Log4Debug
 
         private void errorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void warnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -78,19 +99,40 @@ namespace Log4Debug
                 richTextBox.BeginUpdate();
                 for (int i = 0; i < logList.Count; ++i)
                 {
+                    bool canPrint = true;
                     switch(logLevelList[i])
                     {
                         case LogLevel.Debug:
                             richTextBox.SelectionColor = Color.Green;
+
+                            lock (m_printLevelMutex)
+                            {
+                                canPrint = m_printDebug;
+                            }
                             break;
                         case LogLevel.Info:
                             richTextBox.SelectionColor = Color.White;
+
+                            lock (m_printLevelMutex)
+                            {
+                                canPrint = m_printInfo;
+                            }
                             break;
                         case LogLevel.Warn:
                             richTextBox.SelectionColor = Color.Yellow;
+
+                            lock (m_printLevelMutex)
+                            {
+                                canPrint = m_printWarn;
+                            }
                             break;
                         case LogLevel.Error:
                             richTextBox.SelectionColor = Color.Red;
+
+                            lock (m_printLevelMutex)
+                            {
+                                canPrint = m_printErr;
+                            }
                             break;
                         case LogLevel.Undefine:
                             richTextBox.SelectionColor = Color.Gray;
@@ -100,7 +142,11 @@ namespace Log4Debug
                             break;
                     }
 
-                    richTextBox.AppendText(logList[i]);
+
+                    if (canPrint)
+                    {
+                        richTextBox.AppendText(logList[i]);
+                    }
                     
                 }
 
@@ -213,5 +259,41 @@ namespace Log4Debug
         {
             
         }
+
+        private void errorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            lock (m_printLevelMutex)
+            {
+                m_printErr = errorToolStripMenuItem.Checked == true ? true : false;
+            }
+            
+        }
+
+        private void warnToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            lock (m_printLevelMutex)
+            {
+                m_printWarn = warnToolStripMenuItem.Checked == true ? true : false;
+            }
+        }
+
+        private void infoToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            lock (m_printLevelMutex)
+            {
+                m_printInfo = infoToolStripMenuItem.Checked == true ? true : false;
+            }
+        }
+
+        private void debugToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            lock (m_printLevelMutex)
+            {
+                m_printDebug = debugToolStripMenuItem.Checked == true ? true : false;
+            }
+        }
+
+       
     }
 }

@@ -123,8 +123,9 @@
             this.errorToolStripMenuItem.CheckOnClick = true;
             this.errorToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.errorToolStripMenuItem.Name = "errorToolStripMenuItem";
-            this.errorToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.errorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.errorToolStripMenuItem.Text = "Error";
+            this.errorToolStripMenuItem.CheckedChanged += new System.EventHandler(this.errorToolStripMenuItem_CheckedChanged);
             this.errorToolStripMenuItem.Click += new System.EventHandler(this.errorToolStripMenuItem_Click);
             // 
             // warnToolStripMenuItem
@@ -134,8 +135,10 @@
             this.warnToolStripMenuItem.CheckOnClick = true;
             this.warnToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.warnToolStripMenuItem.Name = "warnToolStripMenuItem";
-            this.warnToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.warnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.warnToolStripMenuItem.Text = "Warn";
+            this.warnToolStripMenuItem.CheckedChanged += new System.EventHandler(this.warnToolStripMenuItem_CheckedChanged);
+            this.warnToolStripMenuItem.Click += new System.EventHandler(this.warnToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
@@ -144,8 +147,10 @@
             this.infoToolStripMenuItem.CheckOnClick = true;
             this.infoToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.infoToolStripMenuItem.Text = "Info";
+            this.infoToolStripMenuItem.CheckedChanged += new System.EventHandler(this.infoToolStripMenuItem_CheckedChanged);
+            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
             // debugToolStripMenuItem
             // 
@@ -154,8 +159,10 @@
             this.debugToolStripMenuItem.CheckOnClick = true;
             this.debugToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
-            this.debugToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.debugToolStripMenuItem.Text = "Debug";
+            this.debugToolStripMenuItem.CheckedChanged += new System.EventHandler(this.debugToolStripMenuItem_CheckedChanged);
+            this.debugToolStripMenuItem.Click += new System.EventHandler(this.debugToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
