@@ -65,14 +65,7 @@ namespace Log4Debug
             {
                 canScroll = m_textBoxCanScroll;
             }
-            //if (canScroll)
-            //{
-            //    richTextBox.BeginAllowScroll();
-            //}
-            //else 
-            //{
-            //    richTextBox.EndAllowScroll();
-            //}
+
 
             List<string> logList = null;
             List<LogLevel> logLevelList = null;
@@ -114,11 +107,11 @@ namespace Log4Debug
                 
                 //richTextBox.Focus();
                 richTextBox.EndUpdate();
-                richTextBox.ScrollToCaret();
+                
 
                 if (canScroll)
                 {
-                    
+                    richTextBox.ScrollToCaret();
                 }
                 
             
@@ -214,6 +207,11 @@ namespace Log4Debug
             {
                 Debug.Assert(false);
             }
+        }
+
+        private void richTextBox_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
