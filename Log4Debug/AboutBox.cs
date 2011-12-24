@@ -104,5 +104,10 @@ namespace Log4Debug
         {
 
         }
+
+        private void AboutBox_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
