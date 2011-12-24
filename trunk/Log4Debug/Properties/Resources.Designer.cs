@@ -77,5 +77,23 @@ namespace Log4Debug.Properties {
                 return ResourceManager.GetString("CutConnect", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 继续滚动 的本地化字符串。
+        /// </summary>
+        internal static string StartScroll {
+            get {
+                return ResourceManager.GetString("StartScroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 暂停滚动 的本地化字符串。
+        /// </summary>
+        internal static string StopScroll {
+            get {
+                return ResourceManager.GetString("StopScroll", resourceCulture);
+            }
+        }
     }
 }
