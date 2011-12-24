@@ -18,6 +18,8 @@ namespace Log4Debug
 
         private const int WM_PAINT = 0x000F;
         private const int WM_VSCROLL = 0x115;
+        private const int WM_DBCLICK = 0x0203;  //双击
+        private const int WM_GETFOCUS = 0x0007;    //获得焦点
 
         private int lockPaint;
         private bool m_allowScroll = true;
@@ -75,6 +77,8 @@ namespace Log4Debug
                     {
                         base.WndProc(ref m);
                     }
+                    return;
+                case WM_GETFOCUS:
                     return;
             }
 

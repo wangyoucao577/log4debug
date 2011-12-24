@@ -47,9 +47,9 @@
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.清空ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.scrollStartPauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.richTextBox = new Log4Debug.SuperRichTextBox();
             this.menuStrip.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
@@ -211,10 +211,6 @@
             this.清空ToolStripMenuItem.Text = "清空";
             this.清空ToolStripMenuItem.Click += new System.EventHandler(this.清空ToolStripMenuItem_Click);
             // 
-            // timer
-            // 
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -227,15 +223,21 @@
             this.scrollStartPauseToolStripMenuItem.Text = "暂停滚动";
             this.scrollStartPauseToolStripMenuItem.Click += new System.EventHandler(this.scrollStartPauseToolStripMenuItem_Click);
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // richTextBox
             // 
             this.richTextBox.BackColor = System.Drawing.Color.Black;
             this.richTextBox.ContextMenuStrip = this.contextMenuStrip;
+            this.richTextBox.DetectUrls = false;
             this.richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox.Font = new System.Drawing.Font("Consolas", 12F);
             this.richTextBox.ForeColor = System.Drawing.Color.White;
+            this.richTextBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.richTextBox.Location = new System.Drawing.Point(0, 25);
-            this.richTextBox.MaxLength = 1;
+            this.richTextBox.MaxLength = 0;
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
             this.richTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
@@ -246,6 +248,7 @@
             this.richTextBox.Text = "";
             this.richTextBox.VScroll += new System.EventHandler(this.richTextBox_VScroll);
             this.richTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.richTextBox_MouseDown);
+            this.richTextBox.Click += new System.EventHandler(this.richTextBox_Click);
             // 
             // Main
             // 
